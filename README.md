@@ -16,7 +16,7 @@ Copy the skill folder into your Claude Code skills directory:
 
 ```bash
 # Clone the repo
-git clone https://github.com/winstonhuang/claude-code-skills.git
+git clone https://github.com/winsthuang/claude-code-skills.git
 
 # Copy the skill you want
 cp -r claude-code-skills/skills/hazel-snowflake-query ~/.claude/skills/
@@ -26,9 +26,9 @@ Or install a single skill directly:
 
 ```bash
 mkdir -p ~/.claude/skills/hazel-snowflake-query/reference
-curl -sL https://raw.githubusercontent.com/winstonhuang/claude-code-skills/main/skills/hazel-snowflake-query/SKILL.md \
+curl -sL https://raw.githubusercontent.com/winsthuang/claude-code-skills/main/skills/hazel-snowflake-query/SKILL.md \
   -o ~/.claude/skills/hazel-snowflake-query/SKILL.md
-curl -sL https://raw.githubusercontent.com/winstonhuang/claude-code-skills/main/skills/hazel-snowflake-query/reference/setup-fallback.md \
+curl -sL https://raw.githubusercontent.com/winsthuang/claude-code-skills/main/skills/hazel-snowflake-query/reference/setup-fallback.md \
   -o ~/.claude/skills/hazel-snowflake-query/reference/setup-fallback.md
 ```
 
