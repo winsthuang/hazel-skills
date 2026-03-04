@@ -5,22 +5,24 @@ description: "Use this skill when the user asks to query Snowflake, analyze Haze
   HAZEL_EDW/HAZEL_STREAM schema. Also triggers on /snowflake or /query."
 ---
 
-Query harness for Hazel Health's Snowflake data warehouse. Ensures Claude uses the correct MCP
-tools, loads the semantic layer for accurate SQL, and falls back gracefully when setup is incomplete.
+Query harness for Hazel Health's Snowflake data warehouse. Ensures Claude queries Snowflake
+correctly via the CLI, loads the semantic layer for accurate SQL, and falls back gracefully when
+setup is incomplete.
 
 ## 1. Prerequisites Check
 
-Before querying, verify the Snowflake MCP server is available:
+Before querying, verify the Snowflake CLI is available:
 
-1. Use `ToolSearch` with query `"snowflake"` to find Snowflake MCP tools.
-2. If tools are found (e.g., `mcp__snowflake__read_query`), proceed to **Section 2**.
-3. If **no tools found**, the MCP server is not configured. Read the bundled fallback:
+1. Run `snow --version` via Bash to confirm the CLI is installed.
+2. Run `snow connection test --connection claude_mcp` via Bash to verify the connection works.
+3. If both succeed, proceed to **Section 2**.
+4. If `snow` is not found or the connection test fails, read the bundled fallback:
 
 ```
 Read: {SKILL_DIR}/reference/setup-fallback.md
 ```
 
-Present the setup instructions to the user and stop. Do not attempt to query without the MCP tools.
+Present the setup instructions to the user and stop. Do not attempt to query without a working CLI connection.
 
 ## 2. Semantic Layer Detection
 
@@ -112,7 +114,8 @@ Follow this procedure for every query:
 4. **Write SQL.** Follow the SQL style in `patterns/sql-style.md`. Use fully qualified schema
    names (e.g., `HAZEL_EDW.MART.MART_VISIT`).
 
-5. **Run the query.** Use the Snowflake MCP tool (e.g., `mcp__snowflake__read_query`).
+5. **Run the query.** Use `snow sql -q "YOUR SQL" --connection claude_mcp` via Bash. For
+   multi-line SQL, write the query to a temp file and use `snow sql -f /tmp/query.sql --connection claude_mcp`.
 
 6. **Validate results.** Cross-check row counts and values against `reference/sanity-checks.md`
    expected ranges. If results look wrong, check gotchas before re-running.
@@ -150,4 +153,4 @@ Follow this procedure for every query:
 | Wrong results | Check `patterns/gotchas.md` — especially enum casing, join fan-out, and schema paths |
 | Table not found | Verify schema path (DIM tables are in `HAZEL_EDW.CORE`, not `MART`) |
 | Permission denied | User may need CLAUDE_READ_ONLY_ROLE — check `~/.snowflake/config.toml` |
-| MCP tools missing | Run `ToolSearch` for "snowflake" — if absent, MCP server not configured |
+| `snow` command not found | Install the Snowflake CLI — see `{SKILL_DIR}/reference/setup-fallback.md` |

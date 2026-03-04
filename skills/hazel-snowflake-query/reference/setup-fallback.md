@@ -1,61 +1,40 @@
-# Snowflake MCP Setup for Claude Code
+# Snowflake CLI Setup for Claude Code
 
-You need two things to query Snowflake from Claude Code: the **MCP server** (connection) and the
+You need two things to query Snowflake from Claude Code: the **Snowflake CLI** (connection) and the
 **semantic layer** (data dictionary). Follow the steps below.
 
-## MCP Server Setup (~10 min)
+## CLI Setup (~5 min)
 
-### 1. Install uv
-
-```bash
-brew install uv
-```
-
-### 2. Get the private key
-
-Ask Winston for the `claude_mcp_key.p8` file, then:
+### 1. Install the Snowflake CLI
 
 ```bash
-mkdir -p ~/.snowflake/keys
-# Copy the key file to ~/.snowflake/keys/claude_mcp_key.p8
-chmod 600 ~/.snowflake/keys/claude_mcp_key.p8
+brew tap snowflakedb/snowflake-cli && brew install snowflake-cli
 ```
 
-### 3. Configure the Snowflake connection
+### 2. Configure the Snowflake connection
 
-Create or edit `~/.snowflake/config.toml`:
+Create or edit `~/.snowflake/config.toml` (replace `YOUR_EMAIL` with your Hazel email):
 
 ```toml
 [connections.claude_mcp]
 account = "HAZELHEALTHORG-HAZELHEALTH"
-user = "CLAUDE_CODE_READER"
+user = "YOUR_EMAIL@hazel.co"
 role = "CLAUDE_READ_ONLY_ROLE"
 warehouse = "COMPUTE_WH"
-authenticator = "SNOWFLAKE_JWT"
-private_key_path = "~/.snowflake/keys/claude_mcp_key.p8"
+authenticator = "externalbrowser"
 ```
 
-### 4. Add the MCP config
+### 3. Verify the connection
 
-Add to your project's `.mcp.json` (or `~/.claude/.mcp.json` for global access):
-
-```json
-{
-  "mcpServers": {
-    "snowflake": {
-      "command": "uvx",
-      "args": [
-        "snowflake-labs-mcp",
-        "--connection-name", "claude_mcp"
-      ]
-    }
-  }
-}
+```bash
+snow connection test --connection claude_mcp
 ```
 
-### 5. Verify
+### 5. Test a query
 
-Restart Claude Code, then ask: "List the tables in HAZEL_EDW.MART"
+```bash
+snow sql -q "SELECT COUNT(*) FROM HAZEL_EDW.MART.MART_VISIT" --connection claude_mcp
+```
 
 ---
 
@@ -91,8 +70,8 @@ The skill will detect this location automatically.
 
 | Problem | Fix |
 |---------|-----|
-| Connection error | Check private key path in `~/.snowflake/config.toml` |
-| Permission denied | Verify key file has `chmod 600` permissions |
-| `uvx` not found | Run `brew install uv` |
-| MCP tools not loading | Restart Claude Code after adding `.mcp.json` |
+| `snow` not found | Run `brew tap snowflakedb/snowflake-cli && brew install snowflake-cli` |
+| Connection error | Check `user` and `account` in `~/.snowflake/config.toml` |
+| Browser doesn't open | Ensure `authenticator = "externalbrowser"` is set in config |
+| SSO token expired | Re-run the query — a new browser window will open to re-authenticate |
 | Wrong query results | Make sure the semantic layer is accessible (see above) |
