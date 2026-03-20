@@ -31,6 +31,7 @@ Then install individual plugins:
 | [`hazel-snowflake-query`](plugins/hazel-snowflake-query/) | data | Query harness for Hazel Health's Snowflake data warehouse with semantic layer detection |
 | [`sigma-dashboard`](plugins/sigma-dashboard/) | data | Extract SQL from Sigma Computing dashboards and inspect workbook queries |
 | [`hazel-brand-guidelines`](plugins/hazel-brand-guidelines/) | design | Hazel Health brand colors, typography, and layout patterns |
+| [`pr-review`](plugins/pr-review/) | engineering | PR review with CLAUDE.md enforcement — flags bugs, compliance, and missing CLAUDE.md updates |
 
 ## Prerequisites
 

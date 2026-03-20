@@ -43,6 +43,12 @@
       "source": "./plugins/hazel-brand-guidelines",
       "description": "Hazel Health brand colors, typography, and layout patterns",
       "category": "design"
+    },
+    {
+      "name": "pr-review",
+      "source": "./plugins/pr-review",
+      "description": "PR review with CLAUDE.md enforcement — flags bugs, compliance issues, and missing CLAUDE.md updates",
+      "category": "engineering"
     }
   ]
 }
