@@ -39,44 +39,45 @@ Glob: **/00-semantic-layer/_index.md   (in CWD)
 Glob: **/semantic-layer/_index.md      (in CWD)
 ```
 
-### Step 2: Common Claude/Claude Code folders
+### Step 2: Common local folders
 
-Search these root directories for Claude project folders:
+Search common locations where users keep Claude Code projects or data files. Run all globs in
+parallel — stop at the first validated hit.
 
-- `~/Documents/`
-- `~/Desktop/`
-- `~/` (home root)
-- `~/Library/Mobile Documents/com~apple~CloudDocs/Documents/` (iCloud Drive)
-- `~/Library/Mobile Documents/com~apple~CloudDocs/` (iCloud root)
-
-At each root, glob for folders matching: `[Cc]laude*/`, `claude-code/`, `claude_code/`
-
-Then inside any match, search for:
-- `**/00-semantic-layer/_index.md`
-- `**/semantic-layer/_index.md`
-
-Run these globs in parallel:
-
+**Documents/Claude variants:**
 ```
 ~/Documents/[Cc]laude*/**/semantic-layer/_index.md
 ~/Documents/[Cc]laude*/**/00-semantic-layer/_index.md
+~/Documents/data-projects/**/semantic-layer/_index.md
+~/Documents/data-projects/**/00-semantic-layer/_index.md
+```
+
+**Desktop and home root:**
+```
 ~/Desktop/[Cc]laude*/**/semantic-layer/_index.md
 ~/Desktop/[Cc]laude*/**/00-semantic-layer/_index.md
 ~/[Cc]laude*/**/semantic-layer/_index.md
 ~/[Cc]laude*/**/00-semantic-layer/_index.md
+```
+
+**iCloud Drive (macOS):**
+```
 ~/Library/Mobile Documents/com~apple~CloudDocs/Documents/[Cc]laude*/**/semantic-layer/_index.md
 ~/Library/Mobile Documents/com~apple~CloudDocs/Documents/[Cc]laude*/**/00-semantic-layer/_index.md
 ~/Library/Mobile Documents/com~apple~CloudDocs/[Cc]laude*/**/semantic-layer/_index.md
 ~/Library/Mobile Documents/com~apple~CloudDocs/[Cc]laude*/**/00-semantic-layer/_index.md
 ```
 
-### Step 3: Google Drive sync
+### Step 3: Google Drive for Desktop
+
+If the user has Google Drive for Desktop, the "Snowflake Semantic Layer" shared drive syncs
+locally. The wildcard `*` handles any Google account email.
 
 ```
+~/Library/CloudStorage/GoogleDrive-*/**/Snowflake Semantic Layer/**/semantic-layer/_index.md
+~/Library/CloudStorage/GoogleDrive-*/**/Snowflake Semantic Layer/**/00-semantic-layer/_index.md
 ~/Library/CloudStorage/GoogleDrive-*/**/semantic-layer/_index.md
 ```
-
-Wildcard handles any Google account email.
 
 ### Step 4: Not found — fallback
 
