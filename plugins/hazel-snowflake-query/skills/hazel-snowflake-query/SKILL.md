@@ -60,14 +60,6 @@ parallel — stop at the first validated hit.
 ~/[Cc]laude*/**/00-semantic-layer/_index.md
 ```
 
-**iCloud Drive (macOS):**
-```
-~/Library/Mobile Documents/com~apple~CloudDocs/Documents/[Cc]laude*/**/semantic-layer/_index.md
-~/Library/Mobile Documents/com~apple~CloudDocs/Documents/[Cc]laude*/**/00-semantic-layer/_index.md
-~/Library/Mobile Documents/com~apple~CloudDocs/[Cc]laude*/**/semantic-layer/_index.md
-~/Library/Mobile Documents/com~apple~CloudDocs/[Cc]laude*/**/00-semantic-layer/_index.md
-```
-
 ### Step 3: Google Drive for Desktop
 
 If the user has Google Drive for Desktop, the "Snowflake Semantic Layer" shared drive syncs
