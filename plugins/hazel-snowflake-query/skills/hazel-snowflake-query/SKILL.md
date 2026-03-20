@@ -14,7 +14,7 @@ setup is incomplete.
 Before querying, verify the Snowflake CLI is available:
 
 1. Run `snow --version` via Bash to confirm the CLI is installed.
-2. Run `snow connection test --connection claude_mcp` via Bash to verify the connection works.
+2. Run `snow connection test` via Bash to verify the default connection works.
 3. If both succeed, proceed to **Section 2**.
 4. If `snow` is not found or the connection test fails, read the bundled fallback:
 
@@ -31,6 +31,16 @@ make queries accurate. Search for it in priority order — stop at the first hit
 
 **Validation:** Any match must contain the text "Semantic Layer Quick Reference" in its first 10
 lines. If not, skip it and continue searching.
+
+### Step 0: Known location (fastest)
+
+Try a direct Read of the known iCloud path first — no globbing needed:
+
+```
+Read: /Users/winstonhuang/Library/Mobile Documents/com~apple~CloudDocs/Documents/Claude Code/data-projects/00-semantic-layer/_index.md
+```
+
+If the file exists and validates, use it and skip all remaining steps.
 
 ### Step 1: Current working directory and parents
 
@@ -114,8 +124,8 @@ Follow this procedure for every query:
 4. **Write SQL.** Follow the SQL style in `patterns/sql-style.md`. Use fully qualified schema
    names (e.g., `HAZEL_EDW.MART.MART_VISIT`).
 
-5. **Run the query.** Use `snow sql -q "YOUR SQL" --connection claude_mcp` via Bash. For
-   multi-line SQL, write the query to a temp file and use `snow sql -f /tmp/query.sql --connection claude_mcp`.
+5. **Run the query.** Use `snow sql -q "YOUR SQL"` via Bash (uses the `default` connection).
+   For multi-line SQL, write the query to a temp file and use `snow sql -f /tmp/query.sql`.
 
 6. **Validate results.** Cross-check row counts and values against `reference/sanity-checks.md`
    expected ranges. If results look wrong, check gotchas before re-running.

@@ -16,7 +16,7 @@ brew tap snowflakedb/snowflake-cli && brew install snowflake-cli
 Create or edit `~/.snowflake/config.toml` (replace `YOUR_EMAIL` with your Hazel email):
 
 ```toml
-[connections.claude_mcp]
+[connections.default]
 account = "HAZELHEALTHORG-HAZELHEALTH"
 user = "YOUR_EMAIL@hazel.co"
 role = "CLAUDE_READ_ONLY_ROLE"
@@ -27,13 +27,13 @@ authenticator = "externalbrowser"
 ### 3. Verify the connection
 
 ```bash
-snow connection test --connection claude_mcp
+snow connection test
 ```
 
 ### 5. Test a query
 
 ```bash
-snow sql -q "SELECT COUNT(*) FROM HAZEL_EDW.MART.MART_VISIT" --connection claude_mcp
+snow sql -q "SELECT COUNT(*) FROM HAZEL_EDW.MART.MART_VISIT"
 ```
 
 ---

@@ -1,0 +1,5 @@
+{
+  "name": "spawn-team",
+  "description": "Spin up coordinated teams of agents in split panes",
+  "version": "1.0.0"
+}

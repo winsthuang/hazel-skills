@@ -1,0 +1,48 @@
+{
+  "name": "hazel-skills",
+  "owner": {
+    "name": "Winston Huang"
+  },
+  "metadata": {
+    "description": "Claude Code skills for Hazel Health workflows",
+    "pluginRoot": "./plugins"
+  },
+  "plugins": [
+    {
+      "name": "spawn-team",
+      "source": "./plugins/spawn-team",
+      "description": "Spin up coordinated teams of agents in split panes",
+      "category": "productivity"
+    },
+    {
+      "name": "de-ai-ify",
+      "source": "./plugins/de-ai-ify",
+      "description": "Strip AI-sounding language from any text",
+      "category": "writing"
+    },
+    {
+      "name": "slack-respond",
+      "source": "./plugins/slack-respond",
+      "description": "Slack inbox triage and response drafting",
+      "category": "communication"
+    },
+    {
+      "name": "hazel-snowflake-query",
+      "source": "./plugins/hazel-snowflake-query",
+      "description": "Query harness for Hazel Health's Snowflake data warehouse with semantic layer detection",
+      "category": "data"
+    },
+    {
+      "name": "sigma-dashboard",
+      "source": "./plugins/sigma-dashboard",
+      "description": "Extract SQL and run gap analysis on Sigma Computing dashboards",
+      "category": "data"
+    },
+    {
+      "name": "hazel-brand-guidelines",
+      "source": "./plugins/hazel-brand-guidelines",
+      "description": "Hazel Health brand colors, typography, and layout patterns",
+      "category": "design"
+    }
+  ]
+}

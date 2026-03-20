@@ -1,0 +1,5 @@
+{
+  "name": "sigma-dashboard",
+  "description": "Extract SQL and run gap analysis on Sigma Computing dashboards",
+  "version": "1.0.0"
+}

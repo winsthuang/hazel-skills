@@ -1,51 +1,44 @@
-# Claude Code Skills
+# hazel-skills
 
-A collection of [Claude Code](https://docs.anthropic.com/en/docs/claude-code) skills for Hazel Health workflows.
-
-Modeled after [`anthropics/skills`](https://github.com/anthropics/skills).
-
-## Included Skills
-
-| Skill | Description |
-|-------|-------------|
-| [`hazel-snowflake-query`](skills/hazel-snowflake-query/) | Query harness for Hazel Health's Snowflake data warehouse with automatic semantic layer detection |
+A [Claude Code](https://docs.anthropic.com/en/docs/claude-code) plugin marketplace for Hazel Health workflows.
 
 ## Installation
 
-Copy the skill folder into your Claude Code skills directory:
+Install plugins from this marketplace:
 
 ```bash
-# Clone the repo
-git clone https://github.com/winsthuang/claude-code-skills.git
-
-# Copy the skill you want
-cp -r claude-code-skills/skills/hazel-snowflake-query ~/.claude/skills/
+/plugin marketplace add winsthuang/hazel-skills
 ```
 
-Or install a single skill directly:
+Then install individual plugins:
 
 ```bash
-mkdir -p ~/.claude/skills/hazel-snowflake-query/reference
-curl -sL https://raw.githubusercontent.com/winsthuang/claude-code-skills/main/skills/hazel-snowflake-query/SKILL.md \
-  -o ~/.claude/skills/hazel-snowflake-query/SKILL.md
-curl -sL https://raw.githubusercontent.com/winsthuang/claude-code-skills/main/skills/hazel-snowflake-query/reference/setup-fallback.md \
-  -o ~/.claude/skills/hazel-snowflake-query/reference/setup-fallback.md
+/plugin install spawn-team@hazel-skills
+/plugin install de-ai-ify@hazel-skills
+/plugin install slack-respond@hazel-skills
+/plugin install hazel-snowflake-query@hazel-skills
+/plugin install sigma-dashboard@hazel-skills
+/plugin install hazel-brand-guidelines@hazel-skills
 ```
+
+## Plugins
+
+| Plugin | Category | Description |
+|--------|----------|-------------|
+| [`spawn-team`](plugins/spawn-team/) | productivity | Spin up coordinated teams of agents in split panes |
+| [`de-ai-ify`](plugins/de-ai-ify/) | writing | Strip AI-sounding language from any text |
+| [`slack-respond`](plugins/slack-respond/) | communication | Slack inbox triage and response drafting |
+| [`hazel-snowflake-query`](plugins/hazel-snowflake-query/) | data | Query harness for Hazel Health's Snowflake data warehouse with semantic layer detection |
+| [`sigma-dashboard`](plugins/sigma-dashboard/) | data | Extract SQL and run gap analysis on Sigma Computing dashboards |
+| [`hazel-brand-guidelines`](plugins/hazel-brand-guidelines/) | design | Hazel Health brand colors, typography, and layout patterns |
 
 ## Prerequisites
 
-The `hazel-snowflake-query` skill requires:
+Some plugins have external dependencies:
 
-1. **Snowflake MCP server** configured in `.mcp.json` — see [setup instructions](skills/hazel-snowflake-query/reference/setup-fallback.md)
-2. **Semantic layer** (optional but recommended) — download from the [Snowflake Semantic Layer](https://drive.google.com/drive/u/0/folders/0ALLHSZxpentJUk9PVA) shared drive
-
-## Usage
-
-Once installed, the skill activates automatically when you:
-
-- Ask Claude to query Snowflake or analyze Hazel Health data
-- Mention tables like `MART_VISIT`, `DIM_PATIENT`, or `TETRIS_RANKED_SCHEDULING`
-- Use `/snowflake` or `/query`
+- **hazel-snowflake-query**: Requires [Snowflake CLI](https://docs.snowflake.com/en/developer-guide/snowflake-cli/index) and optionally the semantic layer — see [setup guide](plugins/hazel-snowflake-query/skills/hazel-snowflake-query/reference/setup-fallback.md)
+- **sigma-dashboard**: Requires Sigma Computing API credentials and the `sigma-integration` project
+- **slack-respond**: Requires Slack MCP server connected to Claude Code
 
 ## License
 
