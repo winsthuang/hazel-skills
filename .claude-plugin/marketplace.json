@@ -35,7 +35,7 @@
     {
       "name": "sigma-dashboard",
       "source": "./plugins/sigma-dashboard",
-      "description": "Extract SQL and run gap analysis on Sigma Computing dashboards",
+      "description": "Extract SQL from Sigma Computing dashboards and inspect workbook queries",
       "category": "data"
     },
     {

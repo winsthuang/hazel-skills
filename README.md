@@ -29,7 +29,7 @@ Then install individual plugins:
 | [`de-ai-ify`](plugins/de-ai-ify/) | writing | Strip AI-sounding language from any text |
 | [`slack-respond`](plugins/slack-respond/) | communication | Slack inbox triage and response drafting |
 | [`hazel-snowflake-query`](plugins/hazel-snowflake-query/) | data | Query harness for Hazel Health's Snowflake data warehouse with semantic layer detection |
-| [`sigma-dashboard`](plugins/sigma-dashboard/) | data | Extract SQL and run gap analysis on Sigma Computing dashboards |
+| [`sigma-dashboard`](plugins/sigma-dashboard/) | data | Extract SQL from Sigma Computing dashboards and inspect workbook queries |
 | [`hazel-brand-guidelines`](plugins/hazel-brand-guidelines/) | design | Hazel Health brand colors, typography, and layout patterns |
 
 ## Prerequisites
