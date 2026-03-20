@@ -10,27 +10,12 @@ workbook elements and lists workbooks.
 
 ## 1. Prerequisites Check
 
-The Sigma integration lives in a project directory. Locate it:
+The Sigma integration code is bundled with this skill at `{SKILL_DIR}/sigma-integration/`.
 
-### Step 1: Search
-
-Glob for the Sigma client:
-
-```
-Glob: **/sigma-integration/sigma_client.py
-```
-
-Try these roots in order:
-- Current working directory
-- `~/Documents/`
-- `~/Desktop/`
-
-If found, set `SIGMA_DIR` to the parent directory.
-
-### Step 2: Verify environment
+Set `SIGMA_DIR` to that path and verify the environment:
 
 1. Check that `.env` exists in `SIGMA_DIR` (contains API credentials).
-2. Check that `SIGMA_DIR/.venv` exists OR that `httpx` and `sqlglot` are importable.
+2. Check that `httpx` and `python-dotenv` are importable.
 
 If `.env` is missing:
 - Show the user the `.env.example` template from `SIGMA_DIR/.env.example`

@@ -1,0 +1,13 @@
+[project]
+name = "sigma-integration"
+version = "0.1.0"
+description = "Extract compiled SQL queries from Sigma Computing dashboards"
+requires-python = ">=3.10"
+dependencies = [
+    "httpx",
+    "python-dotenv",
+    "sqlglot>=25.0",
+]
+
+[project.scripts]
+extract-queries = "extract_queries:main"
