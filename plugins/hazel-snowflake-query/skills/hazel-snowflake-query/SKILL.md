@@ -32,16 +32,6 @@ make queries accurate. Search for it in priority order — stop at the first hit
 **Validation:** Any match must contain the text "Semantic Layer Quick Reference" in its first 10
 lines. If not, skip it and continue searching.
 
-### Step 0: Known location (fastest)
-
-Try a direct Read of the known iCloud path first — no globbing needed:
-
-```
-Read: /Users/winstonhuang/Library/Mobile Documents/com~apple~CloudDocs/Documents/Claude Code/data-projects/00-semantic-layer/_index.md
-```
-
-If the file exists and validates, use it and skip all remaining steps.
-
 ### Step 1: Current working directory and parents
 
 ```
