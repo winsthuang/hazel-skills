@@ -27,12 +27,6 @@
       "category": "communication"
     },
     {
-      "name": "hazel-snowflake-query",
-      "source": "./plugins/hazel-snowflake-query",
-      "description": "Query harness for Hazel Health's Snowflake data warehouse with semantic layer detection",
-      "category": "data"
-    },
-    {
       "name": "sigma-dashboard",
       "source": "./plugins/sigma-dashboard",
       "description": "Extract SQL from Sigma Computing dashboards and inspect workbook queries",
