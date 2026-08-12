@@ -1,5 +1,0 @@
-{
-  "name": "hazel-snowflake-query",
-  "description": "Query harness for Hazel Health's Snowflake data warehouse with semantic layer detection",
-  "version": "1.1.0"
-}
